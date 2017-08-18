@@ -1,0 +1,20 @@
+{
+  "name": "todoList-react",
+  "version": "1.0.0",
+  "description": "Todo List using react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novusratoon/todoList-react.git"
+  },
+  "keywords": [],
+  "author": "Dnyaneshwar Bhalerao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/novusratoon/todoList-react/issues"
+  },
+  "homepage": "https://github.com/novusratoon/todoList-react#readme"
+}
