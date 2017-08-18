@@ -1,14 +1,10 @@
 import React from 'react';
+import ListItem from "./listItem";
 
 export default class TodoHeader extends React.Component {
   constructor(props) {
     super(props);
-    this.onAddTask = this.onAddTask.bind(this);
   }
-  onAddTask() {
-    alert("Hi I am clicked");
-  }
-
   render() {
     return (
       <div className = "row">
@@ -17,7 +13,7 @@ export default class TodoHeader extends React.Component {
             <h2 className = "title">Todo-List</h2>
             <div className = "custom-container">
               <input id = "newTodo" className  = "input-todo" type="text"/>
-              <button className = "btn-cutom" onClick={this.onAddTask}>
+              <button className = "btn-cutom" onClick={this.props.onAddTask}>
                 Add
               </button>
             </div>
