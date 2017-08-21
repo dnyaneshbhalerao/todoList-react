@@ -22493,6 +22493,9 @@ var TodoApp = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (TodoApp.__proto__ || Object.getPrototypeOf(TodoApp)).call(this, props));
 
+    _this.state = {
+      listItems: ["lets add something in todo-list"]
+    };
     _this.onAddTask = _this.onAddTask.bind(_this);
     _this.onDelete = _this.onDelete.bind(_this);
     _this.onComplete = _this.onComplete.bind(_this);
@@ -22502,7 +22505,10 @@ var TodoApp = function (_React$Component) {
   _createClass(TodoApp, [{
     key: 'onAddTask',
     value: function onAddTask() {
-      alert("Hi Im on add Task");
+      var inputTask = document.getElementById("newTodo");
+      /*this.setState({
+        inputTask.value}
+      );*/
     }
   }, {
     key: 'onDelete',
@@ -22520,8 +22526,12 @@ var TodoApp = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'container-fluid' },
-        _react2.default.createElement(_todoHeader2.default, { onAddTask: this.props.onAddTask }),
-        _react2.default.createElement(_todoList2.default, { onComplete: this.onComplete, onDelete: this.onDelete })
+        _react2.default.createElement(_todoHeader2.default, { onAddTask: this.onAddTask }),
+        _react2.default.createElement(_todoList2.default, {
+          listItems: this.state.listItems,
+          onComplete: this.onComplete,
+          onDelete: this.onDelete
+        })
       );
     }
   }]);
@@ -22566,10 +22576,7 @@ var TodoHeader = function (_React$Component) {
   function TodoHeader(props) {
     _classCallCheck(this, TodoHeader);
 
-    var _this = _possibleConstructorReturn(this, (TodoHeader.__proto__ || Object.getPrototypeOf(TodoHeader)).call(this, props));
-
-    _this.onAddTask = _this.onAddTask.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (TodoHeader.__proto__ || Object.getPrototypeOf(TodoHeader)).call(this, props));
   }
 
   _createClass(TodoHeader, [{
@@ -22645,16 +22652,22 @@ var TodoList = function (_React$Component) {
   function TodoList(props) {
     _classCallCheck(this, TodoList);
 
-    var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this, props));
-
-    _this.onComplete = _this.onComplete.bind(_this);
-    _this.onDelete = _this.onDelete.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this, props));
   }
 
   _createClass(TodoList, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var listItems = this.props.listItems.map(function (text, index) {
+        return _react2.default.createElement(_listItem2.default, {
+          text: text,
+          key: "todoItem" + index,
+          onComplete: _this2.props.onComplete,
+          onDelete: _this2.props.onDelete
+        });
+      });
       return _react2.default.createElement(
         "div",
         { className: "row" },
@@ -22664,11 +22677,7 @@ var TodoList = function (_React$Component) {
           _react2.default.createElement(
             "ul",
             { id: "my-list", className: "task-list" },
-            _react2.default.createElement(_listItem2.default, {
-              text: "lets add something in todo-list",
-              onComplete: this.props.onComplete,
-              onDelete: this.props.onDelete
-            })
+            listItems
           )
         )
       );

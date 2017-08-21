@@ -4,15 +4,24 @@ import TodoList from "./components/todoList";
 export default class TodoApp extends React.Component {
   constructor(props) {
     super(props);
+    this.state= {
+      listItems: [
+        "lets add something in todo-list"
+      ]
+    }
     this.onAddTask = this.onAddTask.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onComplete = this.onComplete.bind(this);
   }
   onAddTask() {
-    alert("Hi Im on add Task");
+    let inputTask = document.getElementById("newTodo");
+    this.setState({
+      listItems: this.state.listItems.concat([inputTask.value])
+    });
+
   }
-  onDelete() {
-    alert("Hi I am from main");
+  onDelete(event) {
+    alert("I am delete");
   }
   onComplete() {
     alert("Hi I am on Complete");
@@ -21,7 +30,11 @@ export default class TodoApp extends React.Component {
     return (
       <div className = "container-fluid">
         <TodoHeader onAddTask={this.onAddTask}/>
-        <TodoList onComplete={this.onComplete} onDelete= {this.onDelete}/>
+        <TodoList
+          listItems = {this.state.listItems}
+          onComplete={this.onComplete}
+          onDelete= {this.onDelete}
+        />
       </div>
     );
   }
