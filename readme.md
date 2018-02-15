@@ -8,7 +8,7 @@ npm install
 
 npm run build
 
-# To run on the Wenbpack Server
+# To run on the Webpack Server
 
 npm run start
 
