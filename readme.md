@@ -1,5 +1,3 @@
-# Repository to understand react
-
 # To install dependancies run command
 
 npm install
